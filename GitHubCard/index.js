@@ -5,7 +5,8 @@
 */
 import axios from 'axios'
 
-// axios.get('https://api.github.com/users/c-melchor')
+axios.get('https://api.github.com/users/bigknell')
+// axios.get('https://dog.ceo/api/breed/chihuahua/images/random/6')
 
 
 /*
@@ -68,6 +69,7 @@ function markup(singleObj){
 
     const h3 = document.createElement('h3')
       h3.classList.add('name')
+      // h3.textContent=singleObj.data.textContent.name
       innerDiv.appendChild(h3)
 
     const userName = document.createElement('p')
@@ -81,7 +83,7 @@ function markup(singleObj){
     const profile = document.createElement('p')
       innerDiv.appendChild(profile)
       const  profileLink = document.createElement('a')
-      // profile.appendChild(profileLink)
+      profile.appendChild(profileLink)
 
     const followers = document.createElement('p')
       innerDiv.appendChild(followers)
@@ -94,8 +96,8 @@ function markup(singleObj){
 
     return bigDiv
 }
-
-console.log(cardsHolder)
+cardsHolder.appendChild(markup())
+console.log(markup())
 
 
 /*
@@ -107,27 +109,13 @@ console.log(cardsHolder)
     bigknell
 */
 
-// axios
-// .get('https://api.github.com/users/c-melchor')
-// .then( param => {
-//   const information = param.data;
-//   const infoArr = Array.from(information);
-//   console.log(param, `param is here`)
+axios
+.get('https://api.github.com/users/bigknell')
+.then( param => {
+    console.log('working', param.data)
+})
+.catch( errParam => {
+  console.log('nope', errParam)
+})
 
-//   // infoArr.forEach( item => {
-//   //   const userInfo = markup(item)
-//   //   cardsHolder.appendChild(userInfo)
-    
-//   //   // userName.textContent=param.data.name
-//   // })
 
-  
- 
-// })
-// .catch( errParam => {
-//   console.log('nope', errParam)
-// })
-
-// cardsHolder.appendChild(markup())
-// console.log(axios.get('https://api.github.com/users/c-melchor'))
-axios.get('https://api.github.com/users/c-melchor')
