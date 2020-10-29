@@ -3,6 +3,10 @@
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+import axios from 'axios'
+
+// axios.get('https://api.github.com/users/c-melchor')
+
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -16,6 +20,8 @@
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
+const cardsHolder = document.querySelector('.cards')
+
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
@@ -50,6 +56,48 @@ const followersArray = [];
     </div>
 */
 
+function markup(singleObj){
+  const bigDiv = document.createElement('div')
+  const image = document.createElement('img')
+    bigDiv.appendChild(image)
+    bigDiv.textContent='testing testing'
+
+  const innerDiv = document.createElement('div')
+    innerDiv.classList.add('card-info')
+    bigDiv.appendChild(innerDiv)
+
+    const h3 = document.createElement('h3')
+      h3.classList.add('name')
+      innerDiv.appendChild(h3)
+
+    const userName = document.createElement('p')
+      userName.classList.add('username')
+      innerDiv.appendChild(userName)
+      userName.textContent='username test'
+
+    const location = document.createElement('p')
+      innerDiv.appendChild(location)
+    
+    const profile = document.createElement('p')
+      innerDiv.appendChild(profile)
+      const  profileLink = document.createElement('a')
+      // profile.appendChild(profileLink)
+
+    const followers = document.createElement('p')
+      innerDiv.appendChild(followers)
+
+    const following = document.createElement('p')
+      innerDiv.appendChild(following)
+
+    const bio = document.createElement('p')
+    innerDiv.appendChild(bio)
+
+    return bigDiv
+}
+
+console.log(cardsHolder)
+
+
 /*
   List of LS Instructors Github username's:
     tetondan
@@ -58,3 +106,28 @@ const followersArray = [];
     luishrd
     bigknell
 */
+
+// axios
+// .get('https://api.github.com/users/c-melchor')
+// .then( param => {
+//   const information = param.data;
+//   const infoArr = Array.from(information);
+//   console.log(param, `param is here`)
+
+//   // infoArr.forEach( item => {
+//   //   const userInfo = markup(item)
+//   //   cardsHolder.appendChild(userInfo)
+    
+//   //   // userName.textContent=param.data.name
+//   // })
+
+  
+ 
+// })
+// .catch( errParam => {
+//   console.log('nope', errParam)
+// })
+
+// cardsHolder.appendChild(markup())
+// console.log(axios.get('https://api.github.com/users/c-melchor'))
+axios.get('https://api.github.com/users/c-melchor')
