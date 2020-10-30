@@ -67,9 +67,8 @@ function markup(userHere){
   const bio = document.createElement('p');
    
 
-
+  bigDiv.appendChild(image);
   bigDiv.appendChild(innerDiv);
-  innerDiv.appendChild(image)
   innerDiv.appendChild(h3);
   innerDiv.appendChild(userName);
   innerDiv.appendChild(location);
@@ -79,17 +78,20 @@ function markup(userHere){
   innerDiv.appendChild(following);
   innerDiv.appendChild(bio);
 
+
   bigDiv.classList.add('card');
   innerDiv.classList.add('card-info');
   h3.classList.add('name');
   userName.classList.add('username');
     
+// innerDiv.style.flexWrap='nowrap'
+
   image.src = userHere.avatar_url
   h3.textContent = userHere.name;
   userName.textContent = userHere.login;
   location.textContent = 'Location: ' + userHere.location;
-  profile.textContent = 'Profile: ' 
-  profileLink.textContent=userHere.html_url
+  // profile.textContent = "Profile: "
+  profileLink.textContent = userHere.html_url
   profileLink.href = userHere.html_url
   followers.textContent = 'Followers: ' + userHere.followers;
   following.textContent = 'Following: ' + userHere.following
