@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -46,15 +45,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-
 /* Reset above, our CSS below */
-
 html, body, * {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
-
 html {
   font-size: 62.5%;
 }
@@ -69,7 +64,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
 .header {
   width: 100%;
   display: flex;
@@ -77,20 +71,16 @@ body {
   align-items: center;
   margin-bottom: 50px;
 }
-
 .header img {
   width: 150px;
   height: 150px;
 }
-
 .header p {
   font-size: 48px;
 }
-
 .cards {
   width: 100%;
 }
-
 .card {
   width: 100%;
   padding: 20px;
@@ -100,28 +90,21 @@ body {
   background-color: #FFF;
   margin-bottom: 30px;
 }
-
 .card img {
   width: 150px;
   height: 150px;
   border-radius: 3px;
   margin-right: 20px;
 }
-
 .card .name {
   font-size: 3.4rem;
 }
-
 .card p {
   font-size: 1.4rem;
   margin-bottom: 3px;
 }
-
 .card .username {
   font-size: 1.8rem;
   font-style: italic;
   margin: 3px 0 10px;
 }
-
-
-

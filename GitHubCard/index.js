@@ -5,9 +5,6 @@
 */
 import axios from 'axios'
 
-axios.get('https://api.github.com/users/bigknell')
-// axios.get('https://dog.ceo/api/breed/chihuahua/images/random/6')
-
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -35,7 +32,6 @@ const cardsHolder = document.querySelector('.cards')
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -57,47 +53,55 @@ const followersArray = [];
     </div>
 */
 
-function markup(singleObj){
+function markup(userHere){
   const bigDiv = document.createElement('div')
   const image = document.createElement('img')
-    bigDiv.appendChild(image)
-    bigDiv.textContent='testing testing'
+  const innerDiv = document.createElement('div');
+  const h3 = document.createElement('h3');
+  const userName = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const  profileLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+   
 
-  const innerDiv = document.createElement('div')
-    innerDiv.classList.add('card-info')
-    bigDiv.appendChild(innerDiv)
 
-    const h3 = document.createElement('h3')
-      h3.classList.add('name')
-      // h3.textContent=singleObj.data.textContent.name
-      innerDiv.appendChild(h3)
+  bigDiv.appendChild(innerDiv);
+  innerDiv.appendChild(image)
+  innerDiv.appendChild(h3);
+  innerDiv.appendChild(userName);
+  innerDiv.appendChild(location);
+  innerDiv.appendChild(profile);
+  profile.appendChild(profileLink);
+  innerDiv.appendChild(followers);
+  innerDiv.appendChild(following);
+  innerDiv.appendChild(bio);
 
-    const userName = document.createElement('p')
-      userName.classList.add('username')
-      innerDiv.appendChild(userName)
-      userName.textContent='username test'
-
-    const location = document.createElement('p')
-      innerDiv.appendChild(location)
+  bigDiv.classList.add('card');
+  innerDiv.classList.add('card-info');
+  h3.classList.add('name');
+  userName.classList.add('username');
     
-    const profile = document.createElement('p')
-      innerDiv.appendChild(profile)
-      const  profileLink = document.createElement('a')
-      profile.appendChild(profileLink)
+  image.src = userHere.avatar_url
+  h3.textContent = userHere.name;
+  userName.textContent = userHere.login;
+  location.textContent = 'Location: ' + userHere.location;
+  profile.textContent = 'Profile: ' 
+  profileLink.textContent=userHere.html_url
+  profileLink.href = userHere.html_url
+  followers.textContent = 'Followers: ' + userHere.followers;
+  following.textContent = 'Following: ' + userHere.following
+  bio.textContent = 'Bio: ' + userHere.bio
 
-    const followers = document.createElement('p')
-      innerDiv.appendChild(followers)
-
-    const following = document.createElement('p')
-      innerDiv.appendChild(following)
-
-    const bio = document.createElement('p')
-    innerDiv.appendChild(bio)
 
     return bigDiv
+    
 }
-cardsHolder.appendChild(markup())
-console.log(markup())
+
+
+
 
 
 /*
@@ -110,12 +114,28 @@ console.log(markup())
 */
 
 axios
-.get('https://api.github.com/users/bigknell')
-.then( param => {
-    console.log('working', param.data)
+.get('https://api.github.com/users/c-melchor')
+.then(success => {
+const workingNow = success.data
+cardsHolder.appendChild(markup(workingNow));
+console.log(success.data)
 })
-.catch( errParam => {
-  console.log('nope', errParam)
+.catch(errParam => {
+console.log('nope',errParam)
 })
 
 
+
+const followersArray = ['tetondan', 'dustinmyers', 'justsml','luishrd','bigknell'];
+
+for (let i = 0; i < followersArray.length; i++){
+axios
+.get('https://api.github.com/users/' + followersArray[i])
+.then( futureData => {
+  const  theirData = futureData.data
+  cardsHolder.appendChild(markup(theirData))
+})
+.catch( error => {
+  console.log(`nope, did not work`)
+})
+}
